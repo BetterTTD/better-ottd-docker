@@ -24,12 +24,10 @@ RUN apk update && \
     cmake \
     patch \
     zlib-dev \
-    
     && cd /tmp/src \
     && git clone --verbose --progress https://github.com/OpenTTD/OpenTTD.git . \
     && git fetch --tags \
     && git checkout ${OPENTTD_VERSION} \
-
     && mkdir /tmp/build && cd /tmp/build \
     && cmake --log-level=VERBOSE \
     -DOPTION_DEDICATED=ON \
@@ -42,7 +40,6 @@ RUN apk update && \
     ../src \
     && make CMAKE_BUILD_TYPE=release -j"$(nproc)" \
     && make install \
-
     && cd /home/openttd/run/baseset \
     && rm -rf /tmp/src* \
     && wget -q https://cdn.openttd.org/opengfx-releases/${OPENGFX_VERSION}/opengfx-${OPENGFX_VERSION}-all.zip \
