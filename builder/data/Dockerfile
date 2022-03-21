@@ -5,8 +5,8 @@ RUN mkdir -p /home/openttd/run/baseset \
     && adduser -D -h /home/openttd -s /bin/false openttd \
     && chown -R openttd:openttd /home/openttd
 
-ENV OPENTTD_VERSION=12.1
-ENV OPENGFX_VERSION=7.1
+ENV OPENTTD_VERSION 12.1
+ENV OPENGFX_VERSION 7.1
 ENV PATH /home/openttd/run:$PATH
 
 WORKDIR /home/openttd
