@@ -1,17 +1,6 @@
 version: '3.4'
 
 services:
-  
-  builder:
-    image: server.builder
-    container_name: tg.build
-    environment:
-      OPENTTD_VERSION: "12.1"
-      OPENGFX_VERSION: "7.1"
-      PATH: "/home/openttd/run:$PATH"
-    build:
-      context: .
-      dockerfile: builder/Dockerfile
 
   launcher:
     image: server.launcher
@@ -19,13 +8,13 @@ services:
     networks:
       - tg-server
     environment:
+      OPENTTD_VERSION: "12.1"
+      OPENGFX_VERSION: "7.1"
+      PATH: "/home/openttd/run:$PATH"
       RCON_PASSWORD: "xxx"
       ADMIN_PASSWORD: "xxxx"
       CLIENT_NAME: "vanilla"
       SERVER_NAME: "TG Vanilla (Reddit legacy)"
-    depends_on:
-      - builder
-    restart: always
     ports:
       - 3979:3979
       - 3977:3977
