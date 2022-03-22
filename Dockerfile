@@ -1,13 +1,10 @@
-FROM alpine
+FROM alpine AS builder
 
-RUN mkdir -p /home/openttd/run/baseset \
-    && mkdir /tmp/src \
-    && adduser -D -h /home/openttd -s /bin/false openttd \
-    && chown -R openttd:openttd /home/openttd
-
-ENV OPENTTD_VERSION 12.1
+RUN mkdir -p /home/openttd/data/baseset \
+    && mkdir /tmp/src
+    
 ENV OPENGFX_VERSION 7.1
-ENV PATH /home/openttd/run:$PATH
+ENV OPENTTD_VERSION 12.1
 
 WORKDIR /home/openttd
 
@@ -33,14 +30,14 @@ RUN apk update && \
     -DOPTION_DEDICATED=ON \
     -DOPTION_INSTALL_FHS=OFF \
     -DCMAKE_BUILD_TYPE=release \
-    -DGLOBAL_DIR=/home/openttd/run \
+    -DGLOBAL_DIR=/home/openttd/data \
     -DPERSONAL_DIR=/home/openttd \
     -DCMAKE_BINARY_DIR=bin \
-    -DCMAKE_INSTALL_PREFIX=/home/openttd/run \
+    -DCMAKE_INSTALL_PREFIX=/home/openttd/data \
     ../src \
     && make CMAKE_BUILD_TYPE=release -j"$(nproc)" \
     && make install \
-    && cd /home/openttd/run/baseset \
+    && cd /home/openttd/data/baseset \
     && rm -rf /tmp/src* \
     && wget -q https://cdn.openttd.org/opengfx-releases/${OPENGFX_VERSION}/opengfx-${OPENGFX_VERSION}-all.zip \
     && unzip opengfx-${OPENGFX_VERSION}-all.zip \
@@ -49,17 +46,37 @@ RUN apk update && \
     && cd /home/openttd \
     && apk del .buildreqs
 
-COPY .config.cfg .run/
+###
+###
 
-EXPOSE 3979:3979/tcp
-EXPOSE 3979:3979/udp
+FROM alpine AS vanilla
+ENV PATH /home/openttd/:$PATH
+ENV OPENTTD_VERSION 12.1
+LABEL org.label-schema.name="OpenTTD" \
+      org.label-schema.description="Lightweight OpenTTD Build" \
+      org.label-schema.url="https://github.com/same-f/tg-ottd-docker" \
+      org.label-schema.vcs-url="https://github.com/openttd/openttd" \
+      org.label-schema.vendor="TeamGame_OpenTTD" \
+      org.label-schema.version=$OPENTTD_VERSION \
+      org.label-schema.schema-version="1.0"
+AUTHOr tgsamef <tg.same.f@gmail.com>
 
-RUN apk add --no-cache \
+RUN mkdir -p /home/openttd/{conf.vanilla,conf.welcome,conf.public} && \
+    useradd -d /home/opentt/conf.vanilla -s /bin/false openttd.van && \
+    useradd -d /home/opentt/conf.welcome -s /bin/false openttd.wel && \
+    useradd -d /home/opentt/conf.public -s /bin/false openttd.pub && \
+    apk update && \
+    apk add --no-cache \
     lzo \
     freetype \
     icu-libs \
-    zlib
+    zlib \
+    liblzma
+
+WORKDIR /home/openttd
+
+COPY --from=builder /home/openttd/data /home/openttd/data
 
 USER openttd
 
-CMD [ "openttd", "-D" ]
+CMD [ "sleep", "9999" ]
