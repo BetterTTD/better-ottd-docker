@@ -68,8 +68,8 @@ RUN apk update && \
     icu-libs \
     zlib
 
-RUN adduser -D -h /home/vanilla -s /bin/false openttd && \
-    chown -R openttd /home/vanilla
+RUN adduser -D -h /home/welcome -s /bin/false openttd && \
+    chown -R openttd /home/welcome
 
 WORKDIR /home/welcome
 
@@ -80,6 +80,7 @@ COPY . .
 USER openttd
 
 VOLUME /home/welcome
+VOLUME [ "../.newgrf" "newgrf"]
 
 EXPOSE 3979/tcp
 EXPOSE 3979/udp
