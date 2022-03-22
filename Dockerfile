@@ -5,6 +5,10 @@ RUN mkdir -p /home/openttd/run/baseset \
     && adduser -D -h /home/openttd -s /bin/false openttd \
     && chown -R openttd:openttd /home/openttd
 
+ENV OPENTTD_VERSION 12.1
+ENV OPENGFX_VERSION 7.1
+ENV PATH /home/openttd/run:$PATH
+
 WORKDIR /home/openttd
 
 RUN apk update && \
@@ -44,24 +48,18 @@ RUN apk update && \
     && rm -rf opengfx-*.tar opengfx-*.zip \
     && cd /home/openttd \
     && apk del .buildreqs
-    
-WORKDIR /home/openttd/run
 
-COPY . .
+COPY .config.cfg .run/
+
+EXPOSE 3979:3979/tcp
+EXPOSE 3979:3979/udp
 
 RUN apk add --no-cache \
     lzo \
     freetype \
     icu-libs \
-    zlib && \
-    echo "rcon_password = ${RCON_PASSWORD}" > secrets.cfg && \
-    echo "admin_password = ${ADMIN_PASSWORD}" >> secrets.cfg && \
-    echo "client_name = ${CLIENT_NAME}" > private.cfg && \
-    echo "server_name = ${SERVER_NAME}" >> private.cfg
+    zlib
 
 USER openttd
-
-EXPOSE 3979:3979/tcp
-EXPOSE 3979:3979/udp
 
 CMD [ "openttd", "-D" ]
