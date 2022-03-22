@@ -68,23 +68,23 @@ RUN apk update && \
     icu-libs \
     zlib
 
-RUN adduser -D -h /home/welcome -s /bin/false openttd && \
-    chown -R openttd /home/welcome
+RUN adduser -D -h /home/public -s /bin/false openttd && \
+    chown -R openttd /home/public
 
-WORKDIR /home/welcome
+WORKDIR /home/public
 
-COPY --from=builder /data /home/welcome
+COPY --from=builder /data /home/public
 
 COPY . .
 
 USER openttd
 
-VOLUME /home/welcome
+VOLUME /home/public
 VOLUME [ "../newgrf" "newgrf"]
 
-EXPOSE 3979/tcp
-EXPOSE 3979/udp
+EXPOSE 3980/tcp
+EXPOSE 3980/udp
 
-EXPOSE 3972/tcp
+EXPOSE 3970/tcp
 
-CMD [ "./openttd", "-D", "-c", "openttd.cfg", "-g", "save/WS-F4-start.sav" ]
+CMD [ "./openttd", "-D", "-c", "openttd.cfg", "-g", "save/pp.sav" ]
