@@ -22,11 +22,28 @@ services:
       - 3979:3979
       - 3977:3977
     environment:
-      - RCON_PASSWORD=******
-      - ADMIN_PASSWORD=******
+      - V_RCON_PASSWORD=******
+      - V_ADMIN_PASSWORD=******
     build:
       context: .
       dockerfile: server.vanilla/Dockerfile
+  
+  welcome:
+    image: server.welcome
+    container_name: tg.welcome
+    depends_on:
+      - builder
+    networks:
+      - tg-server
+    ports:
+      - 3982:3982
+      - 3977:3977
+    environment:
+      - W_RCON_PASSWORD=******
+      - W_ADMIN_PASSWORD=******
+    build:
+      context: .
+      dockerfile: server.welcome/Dockerfile
   
 networks:
   tg-server:
