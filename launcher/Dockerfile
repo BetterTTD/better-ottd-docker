@@ -1,4 +1,4 @@
-FROM builder
+FROM server.builder
 
 WORKDIR /home/openttd/run
 
