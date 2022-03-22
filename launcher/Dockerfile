@@ -2,11 +2,6 @@ FROM builder
 
 WORKDIR /home/openttd/run
 
-ENV RCON_PASSWORD r_pass
-ENV ADMIN_PASSWORD a_pass
-ENV CLIENT_NAME vanilla
-ENV SERVER_NAME "TG Vanilla (Reddit legacy)"
-
 COPY . .
 
 RUN apk add --no-cache \
