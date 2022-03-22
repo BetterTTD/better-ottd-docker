@@ -2,23 +2,29 @@ version: '3.4'
 
 services:
 
-  launcher:
-    image: server.launcher
-    container_name: tg.run
+  builder:
+    image: server.builder
+    container_name: tg.builder
+    networks: 
+      - tg-server
+    build:
+      context: .
+      dockerfile: server.builder/Dockerfile
+  
+  vanilla:
+    image: server.vanilla
+    container_name: tg.vanilla
     networks:
       - tg-server
-    environment:
-      OPENTTD_VERSION: "12.1"
-      OPENGFX_VERSION: "7.1"
-      PATH: "/home/openttd/run:$PATH"
-      RCON_PASSWORD: "xxx"
-      ADMIN_PASSWORD: "xxxx"
-      CLIENT_NAME: "vanilla"
-      SERVER_NAME: "TG Vanilla (Reddit legacy)"
     ports:
       - 3979:3979
       - 3977:3977
-    build: .
+    environment:
+      - RCON_PASSWORD=******
+      - ADMIN_PASSWORD=******
+    build:
+      context: .
+      dockerfile: server.vanilla/Dockerfile
   
 networks:
   tg-server:
