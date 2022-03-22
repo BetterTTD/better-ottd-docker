@@ -49,7 +49,7 @@ RUN apk update && \
 ###
 ###
 
-FROM alpine AS vanilla
+FROM alpine
 ENV PATH /home/openttd/:$PATH
 ENV OPENTTD_VERSION 12.1
 LABEL org.label-schema.name="OpenTTD" \
@@ -59,19 +59,19 @@ LABEL org.label-schema.name="OpenTTD" \
       org.label-schema.vendor="TeamGame_OpenTTD" \
       org.label-schema.version=$OPENTTD_VERSION \
       org.label-schema.schema-version="1.0"
-AUTHOr tgsamef <tg.same.f@gmail.com>
+MAINTAINER tgsamef <tg.same.f@gmail.com>
 
-RUN mkdir -p /home/openttd/{conf.vanilla,conf.welcome,conf.public} && \
-    useradd -d /home/opentt/conf.vanilla -s /bin/false openttd.van && \
-    useradd -d /home/opentt/conf.welcome -s /bin/false openttd.wel && \
-    useradd -d /home/opentt/conf.public -s /bin/false openttd.pub && \
-    apk update && \
+RUN apk update && \
     apk add --no-cache \
     lzo \
     freetype \
     icu-libs \
-    zlib \
-    liblzma
+    zlib && \
+    mkdir -p /home/openttd/{conf.vanilla,conf.welcome,conf.public} && \
+    adduser -D -h /home/openttd/conf.vanilla -s /bin/false openttd.van && \
+    adduser -D -h /home/openttd/conf.welcome -s /bin/false openttd.wel && \
+    adduser -D -h /home/openttd/conf.public -s /bin/false openttd.pub && \
+    adduser -D -h /home/openttd -s /bin/false openttd
 
 WORKDIR /home/openttd
 
