@@ -19,7 +19,7 @@ services:
     networks:
       - tg-server
     ports:
-      - 3979:3979
+      - 3982:3982
       - 3977:3977
     environment:
       - V_RCON_PASSWORD=******
@@ -36,8 +36,8 @@ services:
     networks:
       - tg-server
     ports:
-      - 3982:3982
-      - 3977:3977
+      - 3979:3979
+      - 3972:3972
     environment:
       - W_RCON_PASSWORD=******
       - W_ADMIN_PASSWORD=******

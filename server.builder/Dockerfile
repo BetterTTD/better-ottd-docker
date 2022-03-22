@@ -68,7 +68,10 @@ RUN apk update && \
     icu-libs \
     zlib && \
     adduser -D -h /home/openttd -s /bin/false openttd && \
-    chown -R openttd /home/openttd  
+    mkdir /home/openttd/conf.v && \
+    mkdir /home/openttd/conf.w && \
+    mkdir /home/openttd/conf.p && \
+    chown -R openttd /home/openttd
 
 WORKDIR /home/openttd
 
