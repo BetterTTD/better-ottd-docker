@@ -82,8 +82,8 @@ USER openttd
 VOLUME /home/welcome
 
 EXPOSE 3979/tcp
-EXPOSE 3979/upd
+EXPOSE 3979/udp
 
 EXPOSE 3972/tcp
 
-CMD [ "./openttd", "-D" ]
+CMD [ "./openttd", "-D", "-c", "openttd.cfg", "-g", "save/WS-F4-start.sav" ]

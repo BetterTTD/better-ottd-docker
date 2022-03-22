@@ -82,8 +82,8 @@ USER openttd
 VOLUME /home/vanilla
 
 EXPOSE 3982/tcp
-EXPOSE 3982/upd
+EXPOSE 3982/udp
 
 EXPOSE 3977/tcp
 
-CMD [ "./openttd", "-D" ]
+CMD [ "./openttd", "-D", "-c", "openttd.cfg" ]
