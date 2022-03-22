@@ -18,9 +18,7 @@ services:
     ports:
       - 3979:3979
       - 3977:3977
-    build:
-      context: .
-      dockerfile: launcher/Dockerfile
+    build: .
   
 networks:
   tg-server:
