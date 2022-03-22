@@ -1,22 +1,15 @@
 FROM server.builder
 
-ENV PATH /home/openttd/:$PATH
+ENV PATH /home/openttd/data:$PATH
 ENV OPENTTD_VERSION 12.1
+  
+WORKDIR /home/openttd
 
-RUN apk update && \
-    apk add --no-cache \
-    lzo \
-    freetype \
-    icu-libs \
-    zlib && \
-    chown -R openttd.van:openttd.van /home/openttd/conf.vanilla
-    
-WORKDIR /home/openttd/conf.vanilla
+RUN mkdir /home/openttd/conf.vanilla \
+    && /home/openttd/conf.vanilla
 
 COPY . .
 
-VOLUME . vanilla
+USER openttd
 
-USER openttd.van
-
-CMD [ "openttd", "-D" ]
+CMD [ "/home/openttd/data/openttd", "-D" ]

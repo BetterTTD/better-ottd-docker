@@ -67,16 +67,9 @@ RUN apk update && \
     freetype \
     icu-libs \
     zlib && \
-    mkdir -p /home/openttd/{conf.vanilla,conf.welcome,conf.public} && \
-    adduser -D -h /home/openttd/conf.vanilla -s /bin/false openttd.van && \
-    adduser -D -h /home/openttd/conf.welcome -s /bin/false openttd.wel && \
-    adduser -D -h /home/openttd/conf.public -s /bin/false openttd.pub && \
-    adduser -D -h /home/openttd -s /bin/false openttd
+    adduser -D -h /home/openttd -s /bin/false openttd && \
+    chown -R openttd /home/openttd  
 
 WORKDIR /home/openttd
 
 COPY --from=builder /home/openttd/data /home/openttd/data
-
-USER openttd
-
-CMD [ "sleep", "9999" ]

@@ -14,6 +14,8 @@ services:
   vanilla:
     image: server.vanilla
     container_name: tg.vanilla
+    depends_on:
+      - builder
     networks:
       - tg-server
     ports:
