@@ -1,0 +1,11 @@
+#!usr/bin/env bash
+
+echo "Building server image..."
+    docker build -t vanilla.build . &&
+
+echo "Starting server ..."
+    exec docker run -d \
+    -p 3982:3982/udp -p 3982:3982/tcp -p 3977:3977/tcp \
+    -v /home/$USER/.volumes/tg-vanilla.server:/config:rw \
+    --name TG_Vanilla.server vanilla.build
+exit 0
