@@ -1,4 +1,4 @@
 /newgrf
 /TG_Welcome.server
 /TG_Public.server
-/docker-compose.yml
+docker-compose.yml
