@@ -12,8 +12,8 @@ RUN apk update && \
     wget lzo-dev \
     freetype-dev \
     ca-certificates \
-    gcc git \
-    make cmake \
+    gcc git xz-dev \
+    make cmake xz-libs\
     patch zlib-dev \
     && cd /tmp/src \
     && git clone --verbose --progress https://github.com/OpenTTD/OpenTTD.git . \
@@ -55,25 +55,25 @@ RUN mkdir -p /config && \
     adduser -D -h /config -u 1000 -s /bin/false openttd \
     && apk update && \
     apk add --no-cache \
-    lzo freetype \
-    icu-libs zlib
+    lzo freetype xz-dev \
+    icu-libs zlib vtk xz-libs
 
 COPY --from=builder /app /app
 
-COPY openttd.cfg /config/openttd.cfg
+COPY assets/ /config/
 
 RUN chown -R openttd:openttd /config /app
 
 VOLUME /config
 
-EXPOSE 3982/tcp
+EXPOSE 3979/tcp
 
-EXPOSE 3982/udp
+EXPOSE 3979/udp
 
-EXPOSE 3977/tcp
+EXPOSE 3972/tcp
 
 USER openttd
 
-CMD [ "./../app/openttd", "-D", "-c", "openttd.cfg" ]
+CMD [ "./../app/openttd", "-D", "-c", "openttd.cfg", "-g", "wlcm.cfg"]
 
 #CMD [ "sh" ]

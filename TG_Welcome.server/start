@@ -1,0 +1,12 @@
+#!usr/bin/env bash
+
+echo "Building server image..."
+    docker build -t welcome.build .
+
+echo "Starting server ..."
+    exec docker run -ti \
+    -p 3979:3979/udp -p 3979:3979/tcp -p 3972:3972/tcp \
+    --mount type=bind,src=/home/same-f/save,dst=/config/save/,ro=false \
+    --mount type=bind,src=/home/same-f/newgrf,dst=/app/newgrf/,ro=false \
+    --name TG_Welcome.server welcome.build
+exit 0

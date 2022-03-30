@@ -1,4 +1,6 @@
 /newgrf
-/TG_Welcome.server
+/TG_Welcome.server/*.id
 /TG_Public.server
+/TG_Vanilla.server/*.id
 docker-compose.yml
+pars
