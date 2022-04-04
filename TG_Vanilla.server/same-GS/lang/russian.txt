@@ -1,0 +1,44 @@
+STR_WELCOME_TITLE       : Welcome::TeamGame_OpenTTD
+STR_RULES_TITLE         : Server::Rules
+STR_SETTINGS_TITLE      : Server::Settings
+STR_STUFF_TITLE         : Administration::Stuff
+STR_LINKS_TITLE         : Links::TeamGame_OpenTTD
+STR_PAGE_TITLE          : PAGE_TITLE_PLACEHOLDER
+
+STR_WELCOME_WELCOME     : {BLACK} - Добро пожаловать на {GREEN} 'TG Vanilla server' {BLACK} от {ORANGE} 'TeamGame_OpenTTD' !!! {}{}{STRING}
+STR_WELCOME_TEXT1       : {BLACK}-{ORANGE} TeamGame_OpenTTD  - {BLACK} это открытое сообщество, где каждый может присоединиться и поиграть. {}{}{LTBLUE}{CHECKMARK}{BLACK} Это означает, что мы ожидаем от игроков достойного поведения, чтобы всем было весело и чтобы ситуация не вышла из-под контроля. {} Мы сообщество, которое пропагандирует кооперативный стиль игры.  Вместо того, чтобы конкурировать друг с другом, мы объединяемся и работаем для достижения одной цели совместными усилиями. {}{}{STRING}
+STR_WELCOME_TEXT2       : {LTBLUE}{CHECKMARK}{BLACK} Будьте дружелюбным. Это кажется очевидным, но на практике оказывается, что это не так. Если вы в плохом настроении, не порьтьте настроение другим.  «Отзывчивость» не только улучшает атмосферу, но и помогает вам получить больше помощи от других.{}{}{STRING}
+STR_WELCOME_TEXT3       : {BLACK}-{ORANGE} Серверы: {BLACK} Наше сообщество состоит из трех основных серверов. {}{}{BLACK}{RIGHT_ARROW}{ORANGE} TG Vanilla server {}{BLACK}{RIGHT_ARROW}{ORANGE} TG Welcome server {}{BLACK}{RIGHT_ARROW}{ORANGE} TG Public server {}{}
+STR_WELCOME_AWARE       :  {ORANGE}{} ------------------------{RED}В а ж н о:{ORANGE}------------------------ {}-- Компании будут удалены в течение {LTBLUE} 4 часов {ORANGE} с момента выхода последнего игрока. --{} --------------------------------------------------------- {}{}{}{STRING}
+STR_WELCOME_RULES       : {BLACK}-{ORANGE} Пожалуйста! {BLACK} Имейте в виду, что у нас на сервере имеются правила.
+
+STR_RULES_RULES         : {BLACK}-{WHITE}{ORANGE} Правила довольно просты: {}{}{STRING}
+STR_RULES_STEALING      : {BLACK}-{WHITE}{ORANGE} Не воровать {BLACK}: запрещено брать ресурсы с занятых предприятий. Любых, ни первичных, ни вторичных. Если кто-то не использует произведённые товары, их трогать также нельзя.{}{}{STRING}
+STR_RULES_TELEPORT      : {BLACK}-{WHITE}{ORANGE} Не телепортировать {BLACK}: расстояние между названием станции и местом, куда прибывает ТС, должно быть минимальным. Вы по-прежнему можете использовать подключение удалённых частей станции (ctrl+клик) чтобы получить больше ресурсов. Расстояние между частями трансфер-станции не должно быть более 2 клеток.{STRING}
+STR_RULES_GRIDS         : {BLACK}-{WHITE}{ORANGE} Не строить сетки из дорог {BLACK}: запрещено строить дорожные сетки вокруг города чтобы ускорить его рост, разрешены только небольшие фиксы внутри самого города. Если нужно построить дорогу для автобусов, не нарушайте «натуральную» сетку 3х3, города всё равно будут строить дороги именно в таком формате.{}{}{STRING}
+STR_RULES_CENTRAL       : {BLACK}-{WHITE}{ORANGE} Не удалять {BLACK} центральный "тайл" города! {}{}{}{STRING}
+STR_RULES_FORBIDS       : {BLACK}-{WHITE}{RED} Под строгим запретом:{}{}{BLACK}-{LTBLUE} Блокирование{}{BLACK}-{LTBLUE} Гриферство{}{BLACK}-{LTBLUE} Троллинг !!!{}{}
+
+STR_SETTINGS_SET1       : {BLACK}-{GREEN} Игровой период: {RIGHT_ARROW} {LTBLUE} 1940 - 2055 {BLACK} [115] лет. {}{}{STRING}
+STR_SETTINGS_SET2       : {BLACK}-{GREEN} Макс. колличество поездов: {RIGHT_ARROW} {LTBLUE} 1500 {}{}{STRING}
+STR_SETTINGS_SET3       : {BLACK}-{GREEN} Макс. колличество авто: {RIGHT_ARROW} {LTBLUE} 75 {BLACK} да-да, этот сервер про поезда. {}
+STR_SETTINGS_SET4       : {BLACK}-{GREEN} Поломки: {RIGHT_ARROW} {LTBLUE} OFF {}{}{STRING}
+STR_SETTINGS_SET5       : {BLACK}-{GREEN} Инфляция: {RIGHT_ARROW} {LTBLUE} OFF {}{}{STRING}
+STR_SETTINGS_SET6       : {BLACK}-{GREEN} rail_firstred_twoway_eol: {RIGHT_ARROW} {LTBLUE} ON {}{STRING}
+
+STR_STUFF_SET1          : {BLACK}-{ORANGE} @ iTKerry {}{LTBLUE}{RIGHT_ARROW}{YELLOW} Администратор: {GREEN}[ всея ]{}{}{}{STRING}
+STR_STUFF_SET2          : {BLACK}-{ORANGE} @ same-f {}{LTBLUE}{RIGHT_ARROW}{YELLOW} Администратор: {GREEN}[ всея ]{}{}{}{STRING}
+STR_STUFF_SET3          : {BLACK}-{ORANGE} @ Rau {}{LTBLUE}{RIGHT_ARROW}{YELLOW} Модератор: {GREEN}[ ванильный сервер ]{}{STRING}
+STR_STUFF_SET4          : {BLACK}-{ORANGE} @ Redline {}{LTBLUE}{RIGHT_ARROW}{YELLOW} Модератор: {GREEN}[ ванильный и велкам сервера ]{}{}{}{STRING}
+STR_STUFF_SET5          : {BLACK}-{ORANGE} @ Starbud {}{LTBLUE}{RIGHT_ARROW}{YELLOW} Модератор: {GREEN}[ ванильный сервер ]{}{}{}{STRING}
+STR_STUFF_SET6          : {BLACK}-{ORANGE} @ DixieCyanide {}{LTBLUE}{RIGHT_ARROW}{YELLOW} Модератор: {GREEN}[ дискорд сервер ]{}
+
+STR_LINK_PRE            : {BLACK}- {ORANGE} Вы также можете найти нас по этим ссылкам:{}
+STR_LINK_TELEGRAM       : {BLACK}- {WHITE}https://t.me/TG_OpenTTD{}{}{}{STRING}
+STR_LINK_DISCORD        : {BLACK}- {WHITE}https://discord.gg/qXBPgCpsnT{}{}{}{STRING}
+STR_LINK_WEB            : {BLACK}- {WHITE}https://tg-ottd.org{}
+
+STR_RED                 : 0
+STR_ORANGE              : 0
+STR_YELLOW              : 0
+STR_GREEN               : 0

@@ -1,7 +1,7 @@
 FROM alpine AS builder
 
 ARG OPENGFX_VERSION="7.1"
-ARG OPENTTD_VERSION="12.1"
+ARG OPENTTD_VERSION="12.2"
 
 RUN mkdir -p /config \
     && mkdir /tmp/src
@@ -12,8 +12,8 @@ RUN apk update && \
     wget lzo-dev \
     freetype-dev \
     ca-certificates \
-    gcc git \
-    make cmake \
+    gcc git xz-dev \
+    make cmake xz-libs\
     patch zlib-dev \
     && cd /tmp/src \
     && git clone --verbose --progress https://github.com/OpenTTD/OpenTTD.git . \
@@ -45,7 +45,7 @@ RUN apk update && \
 
 FROM alpine
 
-ARG OPENTTD_VERSION="12.1"
+ARG OPENTTD_VERSION="12.2"
 
 LABEL maintainer="tgsamef <tg.same.f@gmail.com>"
 
@@ -55,12 +55,14 @@ RUN mkdir -p /config && \
     adduser -D -h /config -u 1000 -s /bin/false openttd \
     && apk update && \
     apk add --no-cache \
-    lzo freetype \
-    icu-libs zlib
+    lzo freetype xz-dev \
+    icu-libs zlib vtk xz-libs
 
 COPY --from=builder /app /app
 
 COPY openttd.cfg /config/openttd.cfg
+
+COPY same-GS/* /app/game//same-GS/
 
 RUN chown -R openttd:openttd /config /app
 
