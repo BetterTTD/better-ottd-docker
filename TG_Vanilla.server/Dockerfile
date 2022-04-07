@@ -62,7 +62,7 @@ COPY --from=builder /app /app
 
 COPY openttd.cfg /config/openttd.cfg
 
-COPY same-GS/* /app/game//same-GS/
+COPY 44555544-same_GS-1.2.tar /config/content_download/game/44555544-same_GS-1.2.tar
 
 RUN chown -R openttd:openttd /config /app
 
